@@ -31,7 +31,7 @@ public interface TbUserMapper {
         "select",
         "uuid, uname",
         "from tb_user",
-        "order by age desc,username asc"
+        "order by uuid desc,uname asc"
     })
     @Results({
         @Result(column="uuid", property="uuid", jdbcType=JdbcType.VARCHAR),

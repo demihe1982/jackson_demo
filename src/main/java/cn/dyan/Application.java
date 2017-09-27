@@ -12,6 +12,8 @@ public class Application {
     public static void main(String[] args){
         ApplicationContext context =  SpringApplication.run(Application.class,args);
         DemoService service = context.getBean(DemoService.class);
-        service.test();
+        service.queryAll().stream().forEach(tbUser -> {
+            System.out.println("uid:"+tbUser.getUuid()+" uname:"+tbUser.getUname());
+        });
     }
 }
