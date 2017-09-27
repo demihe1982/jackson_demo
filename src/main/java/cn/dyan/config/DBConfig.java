@@ -1,6 +1,7 @@
 package cn.dyan.config;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -10,7 +11,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-public class MybatisConfig {
+public class DBConfig {
 
     @Bean
     public DataSource dataSource(){
@@ -28,6 +29,7 @@ public class MybatisConfig {
     }
 
     @Bean
+    @ConditionalOnClass(SqlSessionFactoryBean.class)
     public SqlSessionFactoryBean sqlSessionFactoryBean(){
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
